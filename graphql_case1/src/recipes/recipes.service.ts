@@ -11,6 +11,7 @@ export class RecipesService {
       description: 'Sichuan Cuisine',
       creationDate: new Date(),
       ingredients: ['Zanthoxylum', 'Beef'],
+      forNumPeople: 6,
     },
     {
       id: '2',
@@ -18,11 +19,12 @@ export class RecipesService {
       description: 'Teochew Cuisine',
       creationDate: new Date(),
       ingredients: ['Mineral water', 'Beef'],
+      forNumPeople: 4,
     },
   ];
 
   async findOneById(id: string): Promise<Recipe> {
-    return this.recipes.filter(v => v.id === id)[0];
+    return this.recipes.filter((v) => v.id === id)[0];
   }
 
   async findAll(recipesArgs: RecipesArgs): Promise<Recipe[]> {

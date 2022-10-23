@@ -9,6 +9,7 @@ type Recipe {
   description: String
   creationDate: Date!
   ingredients: [String!]!
+  forNumPeople: Int!
 }
 
 """Date custom scalar type"""
