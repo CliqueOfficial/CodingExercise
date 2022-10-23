@@ -28,8 +28,8 @@ query RecipeQuery {
 
 ## Question
 
-1. Could you update the code such that it can attach a condition to each field and returns true when the condition is met, false otherwise.
+1. Could you update the code such that it can attach a condition to each field and return true when the condition is met, false otherwise.
 
 2. Examples of such conditions: 
-    1. Check if a cuisine is for 5 people, and it should return true/false for the field recipe.forNumPeople.
-    2. Check if a cuisine description contains 'Sichuan'.
+    1. Check if a cuisine is for 5 people, and it should return true/false for the field `recipe.forNumPeople`.
+    2. Check if a cuisine description contains `Sichuan`.
