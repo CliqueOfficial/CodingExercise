@@ -1,0 +1,51 @@
+# import DateTime from "shared.graphql"
+
+type Query {
+  twitter: Twitter
+}
+
+type Twitter {
+  getOAuth2Token(
+    code: String
+    clientId: String
+    redirectUri: String
+  ): TwitterAccessToken
+  getOAuth2TokenByRefresh(
+    clientId: String
+    refreshToken: String
+  ): TwitterAccessToken
+
+  twitterUser(token: String!): TwitterUser!
+  decoReplyToTweet(token: String!, tweetId: String!): Boolean
+}
+
+type TwitterAccountMetrics {
+  followers_count: Int!
+  following_count: Int!
+  listed_count: Int!
+  tweet_count: Int!
+}
+
+type TwitterAccessToken {
+  access_token: String!
+  expires_in: Int
+  refresh_token: String!
+}
+
+type TwitterAccountInfo {
+  id: String!
+  name: String!
+  username: String!
+  profile_image_url: String!
+  created_at: DateTime!
+  public_metrics: TwitterAccountMetrics
+}
+
+type TwitterUser {
+  me: TwitterAccountInfo!
+  avgFollowersD2: Int!
+  avgPostImpressions: Int!
+  sumLikes(partnerUsername: String!): Int!
+  isFollowing(partnerUsername: String!): Boolean!
+  numProjectPosts(keywords: [String]): Int!
+}

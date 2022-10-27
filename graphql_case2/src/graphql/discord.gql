@@ -1,0 +1,50 @@
+# import DateTime from "shared.graphql"
+
+type Query {
+  discord: Discord
+}
+
+type Discord {
+  getDiscordAccessToken(
+    clientId: String
+    clientSecret: String
+    authCode: String
+    redirect: String
+  ): DiscordToken
+
+  discordUser(token: String): DiscordUser # V2
+}
+
+type DiscordToken {
+  access_token: String!
+  token_type: String
+  expires_in: Int
+  refresh_token: String
+}
+
+type DiscordAccountInfo {
+  id: String!
+  username: String!
+  discriminator: String!
+  avatar: String
+  mfa_enabled: Boolean
+  banner: String
+  accent_color: String
+  locale: String
+  verified: Boolean
+  email: String
+}
+
+type DiscordUser {
+  timeJoined(serverId: String): DateTime
+
+  activityNum(serverId: String, channelId: String): Int
+
+  numInvites: Int
+
+  numInvitesPerServer(serverId: String): Int
+
+  userCreatedAt: DateTime
+
+  getUserByToken: DiscordAccountInfo
+}
